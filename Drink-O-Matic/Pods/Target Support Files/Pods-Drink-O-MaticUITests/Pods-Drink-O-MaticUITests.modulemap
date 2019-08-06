@@ -1,0 +1,6 @@
+framework module Pods_Drink_O_MaticUITests {
+  umbrella header "Pods-Drink-O-MaticUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
