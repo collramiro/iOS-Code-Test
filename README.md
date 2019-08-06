@@ -16,12 +16,22 @@ Please clone the repository, complete the exercise, and submit a PR for us to re
 
 A) Describe the strategy used to consume the API endpoints and the data management.
 
+To consume the API endpoints I used Alamofire5 (beta version). If you check the two models, you'll notice that I used different approachs to parse the data. At Drink model, I used the new Codable Swift object, that gives you a super easy and quick way to parse JSON response into models. For the DrinkDetail, I used standard dict parsing to fetch properly the N ingredients.
+
 B) Explain which library was used for the routing and why. Would you use the same for a consumer facing app targeting thousands of users? Why?
+
+I used a different approach for navigation in the app basing myself in a demo proyect. Using advanced transitions I copied the navigation from AppStore, using UIViewControllerTransitioningDelegate to achive it.
 
 C) Have you used any strategy to optimize the performance of the list generated for the first feature?
 
+Yes, I'm fetching each drink detail at the willDisplay delegate of the collectionview and requesting it from API asynchronously. Also, I'm caching the models into an array during the applife time, so we only need to fetch it once. If you perform a pull to request at the collectionview, all data will be refreshed from server. Anyway, this can be a lot better with a better API.
+
 D) Would you like to add any further comments or observations?
 
+The API haves a really poor design. It can be improved in a lot of different ways, for example:
+	- Having all the data that we need at home screen at the first request.
+	- Using pagination
+	- Using timestamps to keep track of changes in data. In this way, we can use a database that can keep record of all drinks and just update some if is necessary.
 
 ## Overview:
 
